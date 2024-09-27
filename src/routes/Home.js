@@ -1,7 +1,6 @@
 
-import Header from './components/Header';
-import Pesquisa from './components/Pesquisa';
-import UltimosLancamentos from './components/UltimosLancamentos';
+import Pesquisa from '../components/Pesquisa';
+import UltimosLancamentos from '../components/UltimosLancamentos';
 import styled from 'styled-components'; //Esse pacote utiliza componentes estilizados para simplificar o uso de CSS nos components.
 
 const AppContainer = styled.div`
@@ -10,14 +9,15 @@ height: 100vh;
 background-image: linear-gradient(90deg,#002F52 35%,#326589 165%);
 `
 
-function App() {
+function Home() {
   return (
     <AppContainer>
-      <Header/>
       <Pesquisa/>
       <UltimosLancamentos/>
     </AppContainer>
   );
 }
 
-export default App;
+document.title = 'AluraBooks'
+
+export default Home;
