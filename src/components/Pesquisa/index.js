@@ -3,7 +3,8 @@ import styled from 'styled-components';
 import { livros } from './dadosPesquisa';
 
 //As chaves {} server para importar somente o useState, caso não utilizasse, seria importado tudo que tem disponível na dependência
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { getLivros } from '../../services/livros';
 
 
 const PesquisaContainer = styled.section`
@@ -52,8 +53,16 @@ function Pesquisa() {
 
     //[estado, funcaoParaSetarEstado]
     const [livrosPesquisados, setLivrosPesquisados]  = useState([])
-    console.log(livrosPesquisados);
+    const [livros, setLivros] = useState([])
 
+    useEffect(() => {
+        fetchLivros()
+        }, [])
+
+    async function fetchLivros() {
+        const livrosDaAPI = await getLivros()
+        setLivros(livrosDaAPI)
+    }
     return (
         <PesquisaContainer>
             <Titulo>Já sabe por onde começar?</Titulo>
